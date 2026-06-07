@@ -4,8 +4,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iFreeNEXT FANG+ 騰落率トラッカー</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script src="./iFreeNEXT FANG+ 騰落率トラッカー_files/chart.umd.min.js.ダウンロード"></script>
+<script src="./iFreeNEXT FANG+ 騰落率トラッカー_files/chartjs-adapter-date-fns.bundle.min.js.ダウンロード"></script>
 <style>
 :root {
   --bg: #0d1117; --bg2: #161b22; --bg3: #1a1f2e;
@@ -322,7 +322,8 @@ function updateADCA() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const cached = loadCache();
-  if (cached) {
+  const cacheHasFx = cached && cached.some(d => d.fx != null);
+  if (cached && cacheHasFx) {
     window._lastData = cached;
     renderAll(cached);
     const t = new Date(JSON.parse(localStorage.getItem(CACHE_KEY)).ts);
